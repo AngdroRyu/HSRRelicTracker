@@ -1,0 +1,354 @@
+{
+  "domains": [
+    {
+      "name": "Cavern of Corrosion: Path of Thundersurge",
+      "sets": [
+        {
+          "name": "Wavestrider Captain",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Warrior Goddess of Sun and Thunder",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Gelid Wind",
+      "sets": [
+        {
+          "name": "Hunter of Flacial Forest",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eagle of Twilight Line",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect RES%"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

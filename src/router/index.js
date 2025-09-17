@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AddRelicView from '../views/AddRelicView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -9,6 +10,12 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: { title: 'Home - HSRRelic Tracker' }, //titles for pages like so
+    },
+    {
+      path: '/add-relic',
+      name: 'RelicForm',
+      component: AddRelicView,
+      meta: { title: 'Add Relic - HSRRelic Tracker' },
     },
   ],
   scrollBehavior(to, from, savedPosition) {
