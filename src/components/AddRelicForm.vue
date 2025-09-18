@@ -79,7 +79,8 @@
       <div class="flex gap-2">
         <button
           @click="handleSubmit"
-          class="flex-1 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500"
+          :disabled="!canSubmit"
+          class="flex-1 px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 disabled:opacity-50"
         >
           Add Relic
         </button>
@@ -217,6 +218,19 @@ const slotSubStats = computed(() => selectedSet.value?.pieces?.[slot.value]?.sub
 
 // exclude mainStat from substat choices
 const filteredSubStats = computed(() => slotSubStats.value.filter((s) => s !== mainStat.value))
+
+const canSubmit = computed(() => {
+  return (
+    domain.value &&
+    setName.value &&
+    slot.value &&
+    mainStat.value &&
+    selectedSubStats.value.length > 2 &&
+    selectedSubStats.value.every(
+      (stat) => subStatValues.value[stat] !== undefined && subStatValues.value[stat] !== null,
+    )
+  )
+})
 
 // currentRelic preview (always in sync with v-models)
 const currentRelic = computed(() => ({
