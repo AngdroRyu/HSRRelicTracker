@@ -7,17 +7,17 @@
       <!-- Domain -->
       <select v-model="domain" class="border p-2 rounded w-full bg-stone-800 text-white">
         <option value="">Select Domain</option>
-        <option v-for="d in relicDomains" :key="d.name" :value="d.name">{{ d.name }}</option>
+        <option v-for="d in relicDomains" :key="d.name" :value="d.name">
+          {{ d.name }}
+        </option>
       </select>
 
-      <!-- Set (disabled until domain chosen) -->
-      <select
-        v-model="setName"
-        :disabled="!domain"
-        class="border p-2 rounded w-full bg-stone-800 text-white disabled:opacity-60"
-      >
+      <!-- Set -->
+      <select v-model="setName" class="border p-2 rounded w-full bg-stone-800 text-white">
         <option value="">Select Set</option>
-        <option v-for="s in sets" :key="s.name" :value="s.name">{{ s.name }}</option>
+        <option v-for="s in sets" :key="s.name" :value="s.name">
+          {{ s.name }}
+        </option>
       </select>
 
       <!-- Slot -->
@@ -55,11 +55,14 @@
             <span class="flex-1">{{ stat }}</span>
 
             <!-- Fixed-value buttons, only show if substat is selected -->
-            <div v-if="selectedSubStats.includes(stat)" class="flex gap-1">
+            <div class="flex gap-1">
               <button
                 v-for="value in substatOptions[stat]"
                 :key="value"
                 @click="subStatValues[stat] = value"
+                :disabled="
+                  !selectedSubStats.includes(stat) && selectedSubStats.length >= MAX_SUBSTATS
+                "
                 :class="{
                   'bg-blue-600 text-white': subStatValues[stat] === value,
                   'bg-gray-600 text-white': subStatValues[stat] !== value,
@@ -89,6 +92,7 @@
     <!-- Preview / Export -->
     <div class="w-80 border p-4 rounded bg-neutral-800 text-white">
       <h4 class="font-semibold mb-2">Current Relic Preview</h4>
+      <img v-if="imageSrc" :src="imageSrc" :alt="selectedSet?.name || 'Relic Image'" />
       <p><strong>Domain:</strong> {{ currentRelic.domain || '—' }}</p>
       <p><strong>Set:</strong> {{ currentRelic.set || '—' }}</p>
       <p><strong>Slot:</strong> {{ currentRelic.slot || '—' }}</p>
@@ -137,7 +141,7 @@ import relicData from '../data/relics.json'
 // ---------------- Types ----------------
 type MainStatEntry = { stat: string; rate?: number }
 type Piece = { mainStats: MainStatEntry[]; subStats: string[] }
-type RelicSet = { name: string; dropRate?: number; pieces: Record<string, Piece> }
+type RelicSet = { name: string; imagePath: string; pieces: Record<string, Piece> }
 type Domain = { name: string; sets: RelicSet[] }
 type RelicData = { domains: Domain[] }
 
@@ -153,7 +157,6 @@ type LoggedRelic = {
 
 // ---------------- State ----------------
 const relicDomains = (relicData as RelicData).domains || []
-
 const domain = ref<string>('')
 const setName = ref<string>('')
 const slot = ref<string>('')
@@ -163,26 +166,48 @@ const selectedSubStats = ref<string[]>([])
 const subStatValues = ref<Record<string, string | number | null>>({})
 
 const MAX_SUBSTATS = 4
-const slots = ['Head', 'Body', 'Hands', 'Feet']
 const props = defineProps<{ relics: LoggedRelic[] }>()
 const emit = defineEmits<{ (e: 'update:relics', value: LoggedRelic[]): void }>()
 const substatOptions: Record<string, (string | number)[]> = {
-  HP: [10, 15, 20],
-  'HP%': ['5%', '8%', '12%'],
-  ATK: [10, 15, 20],
-  'ATK%': ['5%', '8%', '12%'],
-  DEF: [10, 15, 20],
-  'DEF%': ['5%', '8%', '12%'],
-  'Crit Rate': ['3%', '5%', '7%'],
-  'Crit DMG': ['6%', '9%', '12%'],
-  'Break effect': ['3%', '5%', '7%'],
-  'Effect Hit Rate': ['3%', '5%', '7%'],
-  'Effect RES': ['3%', '5%', '7%'],
+  HP: [33, 38, 42],
+  'HP%': ['3.4%', '3.8%', '4.3%'],
+  ATK: [16, 19, 21],
+  'ATK%': ['3.4%', '3.8%', '4.3%'],
+  DEF: [16, 19, 21],
+  'DEF%': ['4.3%', '4.8%', '5.4%'],
+  Speed: [2],
+  'Crit Rate%': ['2.5%', '2.9%', '3.2%'],
+  'Crit DMG%': ['5.1%', '5.8%', '6.4%'],
+  'Break Effect': ['5.1%', '5.8%', '6.4%'],
+  'Effect Hit Rate%': ['3.4%', '3.8%', '4.3%'],
+  'Effect Res%': ['3.4%', '3.8%', '4.3%'],
 }
 
 // ---------------- Computeds ----------------
 const selectedDomain = computed(() => relicDomains.find((d) => d.name === domain.value))
-const sets = computed(() => selectedDomain.value?.sets || [])
+const allSets = computed(() =>
+  relicDomains
+    .flatMap((domain) =>
+      domain.sets.map((set) => ({
+        domain: domain.name,
+        name: set.name,
+      })),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name)),
+)
+
+const imageSrc = computed(() =>
+  selectedSet.value?.imagePath ? new URL(selectedSet.value.imagePath, import.meta.url).href : '',
+)
+
+const slots = computed(() => (selectedSet.value ? Object.keys(selectedSet.value.pieces) : []))
+
+const sets = computed(() => {
+  if (!domain.value)
+    return relicDomains.flatMap((d) => d.sets).sort((a, b) => a.name.localeCompare(b.name)) // all sets if no domain picked
+  const foundDomain = relicDomains.find((d) => d.name === domain.value)
+  return foundDomain?.sets || []
+})
 const selectedSet = computed(() => sets.value.find((s) => s.name === setName.value))
 
 const slotMainStats = computed(
@@ -207,6 +232,35 @@ const currentRelic = computed(() => ({
 }))
 
 // ---------------- Watches / Reactivity ----------------
+// if domain changes, clear set if no longer valid
+watch(domain, (newDomain, oldDomain) => {
+  if (!newDomain) {
+    setName.value = '' // clear set if domain reset
+    return
+  }
+
+  // if the currently chosen set is not in the new domain → clear it
+  const domainSets = relicDomains.find((d) => d.name === newDomain)?.sets || []
+  const stillValid = domainSets.some((s) => s.name === setName.value)
+
+  if (!stillValid) {
+    setName.value = ''
+  }
+})
+// if set changes, update domain (in case user manually changed set without changing domain)
+watch(setName, (newSet) => {
+  if (!newSet) return
+  const found = allSets.value.find((s) => s.name === newSet)
+  if (found) {
+    domain.value = found.domain
+  }
+})
+
+watch(slots, (newSlots) => {
+  if (!newSlots.includes(slot.value)) {
+    slot.value = '' // reset if the previous slot is no longer valid
+  }
+})
 
 // if mainStat changes, remove it from selected substats (if present)
 watch(mainStat, (newVal) => {
@@ -238,6 +292,24 @@ watch(slotMainStats, (newStats) => {
     mainStat.value = '' // reset if multiple options
   }
 })
+
+watch(
+  subStatValues,
+  (newVal, oldVal) => {
+    for (const stat of Object.keys(newVal)) {
+      const val = newVal[stat]
+      // If a substat now has a value, ensure it's selected
+      if (val != null && !selectedSubStats.value.includes(stat)) {
+        selectedSubStats.value.push(stat)
+      }
+      // If a substat value is cleared, remove from selectedSubStats
+      if ((val === null || val === '') && selectedSubStats.value.includes(stat)) {
+        selectedSubStats.value = selectedSubStats.value.filter((s) => s !== stat)
+      }
+    }
+  },
+  { deep: true },
+)
 
 // ---------------- Methods ----------------
 function handleSubmit() {

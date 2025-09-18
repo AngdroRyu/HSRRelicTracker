@@ -5,6 +5,7 @@
       "sets": [
         {
           "name": "Wavestrider Captain",
+          "imagePath": "./../assets/relics/Item_Wavestrider_Captain.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
@@ -19,7 +20,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -44,7 +45,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -61,7 +62,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -83,13 +84,15 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%"
+                "Effect Res%",
+                "Break Effect"
               ]
             }
           }
         },
         {
           "name": "Warrior Goddess of Sun and Thunder",
+          "imagePath": "./../assets/relics/Item_Warrior_Goddess_of_Sun_and_Thunder.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
@@ -104,7 +107,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -129,7 +132,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -146,7 +149,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -168,7 +171,8 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%"
+                "Effect Res%",
+                "Break Effect"
               ]
             }
           }
@@ -180,6 +184,7 @@
       "sets": [
         {
           "name": "Hunter of Flacial Forest",
+          "imagePath": "./../assets/relics/Item_Hunter_of_Glacial_Forest.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
@@ -194,7 +199,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -219,7 +224,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -236,7 +241,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -258,13 +263,15 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%"
+                "Effect Res%",
+                "Break Effect"
               ]
             }
           }
         },
         {
           "name": "Eagle of Twilight Line",
+          "imagePath": "./../assets/relics/Item_Eagle_of_Twilight_Line.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
@@ -279,7 +286,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -304,7 +311,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -321,7 +328,7 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%",
+                "Effect Res%",
                 "Break Effect"
               ]
             },
@@ -343,7 +350,3465 @@
                 "Crit Rate%",
                 "Crit DMG%",
                 "Effect Hit Rate%",
-                "Effect RES%"
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Jabbing Punch",
+      "sets": [
+        {
+          "name": "Champion of Streetwise Boxing",
+          "imagePath": "./../assets/relics/Item_Champion_of_Streetwise_Boxing.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Thief of Shooting Meteor",
+          "imagePath": "./../assets/relics/Item_Thief_of_Shooting_Meteor.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Drifting",
+      "sets": [
+        {
+          "name": "Passerby of Wandering Cloud",
+          "imagePath": "./../assets/relics/Item_Passerby_of_Wandering_Cloud.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Musketeer of Wild Wheat",
+          "imagePath": "./../assets/relics/Item_Musketeer_of_Wild_Wheat.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Providence",
+      "sets": [
+        {
+          "name": "Guard of Wuthering Snow",
+          "imagePath": "./../assets/relics/Item_Guard_of_Wuthering_Snow.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Genius of Brilliant Stars",
+          "imagePath": "./../assets/relics/Item_Genius_of_Brilliant_Stars.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Holy Hymn",
+      "sets": [
+        {
+          "name": "Knight of Purity Palace",
+          "imagePath": "./../assets/relics/Item_Knight_of_Purity_Palace.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Band of Sizzling Thunder",
+          "imagePath": "./../assets/relics/Item_Band_of_Sizzling_Thunder.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Conflagration",
+      "sets": [
+        {
+          "name": "Firesmith of Lava-Forging",
+          "imagePath": "./../assets/relics/Item_Firesmith_of_Lava-Forging.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Wastelander of Banditry Desert",
+          "imagePath": "./../assets/relics/Item_Wastelander_of_Banditry_Desert.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Elixir Seekers",
+      "sets": [
+        {
+          "name": "Longevous Desciple",
+          "imagePath": "./../assets/relics/Item_Longevous_Disciple.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Messenger Traversing Hackerspace",
+          "imagePath": "./../assets/relics/Item_Messenger_Traversing_Hackerspace.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Darkness",
+      "sets": [
+        {
+          "name": "The Ashblazing Grand Duke",
+          "imagePath": "./../assets/relics/Item_The_Ashblazing_Grand_Duke.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Prisoner in Deep Confinement",
+          "imagePath": "./../assets/relics/Item_Prisoner_in_Deep_Confinement.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Dreamdive",
+      "sets": [
+        {
+          "name": "Pioneer Diver of Dead Waters",
+          "imagePath": "./../assets/relics/Item_Pioneer_Diver_of_Dead_Waters.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Watchmaker of Master of Dream Machinations",
+          "imagePath": "./../assets/relics/Item_Watchmaker,_Master_of_Dream_Machinations.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Cavalier",
+      "sets": [
+        {
+          "name": "Iron Cavalry Against the Scourge",
+          "imagePath": "./../assets/relics/Item_Iron_Cavalry_Against_the_Scourge.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "The Wind-Soaring Valorous",
+          "imagePath": "./../assets/relics/Item_The_Wind-Soaring_Valorous.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Uncertainty",
+      "sets": [
+        {
+          "name": "Scholar Lost in Erudition",
+          "imagePath": "./../assets/relics/Item_Scholar_Lost_in_Erudition.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Sacerdos' Relived Ordeal",
+          "imagePath": "./../assets/relics/Item_Sacerdos'_Relived_Ordeal.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Aria",
+      "sets": [
+        {
+          "name": "Hero of Triumphant Song",
+          "imagePath": "./../assets/relics/Item_Hero_of_Triumphant_Song.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Poet of Mourning Collapse",
+          "imagePath": "./../assets/relics/Item_Poet_of_Mourning_Collapse.webp",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Hidden Salvation",
+      "sets": [
+        {
+          "name": "World-Remaking Deliverer",
+          "imagePath": "",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Self-Enshrouding Recluse",
+          "imagePath": "",
+          "pieces": {
+            "Head": {
+              "mainStats": [{ "stat": "HP" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Body": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Crit Rate%" },
+                { "stat": "Crit DMG%" },
+                { "stat": "Effect Hit Rate%" },
+                { "stat": "Outgoing Healing%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Hands": {
+              "mainStats": [{ "stat": "ATK" }],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Feet": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "Speed" },
+                { "stat": "DEF%" },
+                { "stat": "ATK%" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Untoppled Walls",
+      "sets": [
+        {
+          "name": "Space Sealing Station",
+          "imagePath": "./../assets/relics/Item_Space_Sealing_Station.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Fleet of the Ageless",
+          "imagePath": "./../assets/relics/Item_Fleet_of_the_Ageless.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Smelted Heart",
+      "sets": [
+        {
+          "name": "Talia: Kingdom of Banditry",
+          "imagePath": "./../assets/relics/Item_Talia_Kingdom_of_Banditry.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Sprightly Vonwacq",
+          "imagePath": "./../assets/relics/Item_Sprightly_Vonwacq.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Gentle Words",
+      "sets": [
+        {
+          "name": "Pan-Cosmic Commercial Enterprise",
+          "imagePath": "./../assets/relics/Item_Pan-Cosmic_Commercial_Enterprise.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Celestial Differentiator",
+          "imagePath": "./../assets/relics/Item_Celestial_Differentiator.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: PermaFrost",
+      "sets": [
+        {
+          "name": "Belobog of the Architects",
+          "imagePath": "./../assets/relics/Item_Belobog_of_the_Architects.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inert Salsotto",
+          "imagePath": "./../assets/relics/Item_Inert_Salsotto.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Fruit of Evil",
+      "sets": [
+        {
+          "name": "Rutilant Arena",
+          "imagePath": "./../assets/relics/Item_Rutilant_Arena.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Broken Keel",
+          "imagePath": "./../assets/relics/Item_Broken_Keel.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Pouring Blades",
+      "sets": [
+        {
+          "name": "Firmament Frontiline: Glamoth",
+          "imagePath": "./../assets/relics/Item_Firmament_Frontline_Glamoth.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Penacony, Land of Dreams",
+          "imagePath": "./../assets/relics/Item_Penacony,_Land_of_the_Dreams.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: To Sweet Dreams",
+      "sets": [
+        {
+          "name": "Sigonia, the Unclaimed Desolation",
+          "imagePath": "./../assets/relics/Item_Sigonia,_the_Unclaimed_Desolation.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Izumo Gensei and Takama Divine Realm",
+          "imagePath": "./../assets/relics/Item_Izumo_Gensei_and_Takama_Divine_Realm.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Eternal Comedy",
+      "sets": [
+        {
+          "name": "Duran, Dynasty of Running Wolves",
+          "imagePath": "./../assets/relics/Item_Duran,_Dynasty_of_Running_Wolves.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Forge of the Kalkpagni Lantern",
+          "imagePath": "./../assets/relics/Item_Forge_of_the_Kalpagni_Lantern.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Famished Worker",
+      "sets": [
+        {
+          "name": "Lushaka, the Sunken Seas",
+          "imagePath": "./../assets/relics/Item_Lushaka,_the_Sunken_Seas.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "The Wondrous BananAmusment Park",
+          "imagePath": "./../assets/relics/Item_The_Wondrous_BananAmusement_Park.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Unceasing Strife",
+      "sets": [
+        {
+          "name": "Bone Collection's Serene Demesne",
+          "imagePath": "./../assets/relics/Item_Bone_Collection's_Serene_Demesne.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Giant Tree of Rapt Brooding",
+          "imagePath": "./../assets/relics/Item_Giant_Tree_of_Rapt_Brooding.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Divergent Universe: Moonlit Blood",
+      "sets": [
+        {
+          "name": "Arcaida of Woven Dreams",
+          "imagePath": "./../assets/relics/Item_Arcadia_of_Woven_Dreams.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Revelry by the Sea",
+          "imagePath": "./../assets/relics/Item_Revelry_by_the_Sea.webp",
+          "pieces": {
+            "Link Rope": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Break Effect" },
+                { "stat": "Energy Regeneration Rate" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
+              ]
+            },
+            "Planar Sphere": {
+              "mainStats": [
+                { "stat": "HP%" },
+                { "stat": "ATK%" },
+                { "stat": "DEF%" },
+                { "stat": "Physical DMG Boost" },
+                { "stat": "Fire DMG Boost" },
+                { "stat": "Ice DMG Boost" },
+                { "stat": "Wind DMG Boost" },
+                { "stat": "Lightning DMG Boost" },
+                { "stat": "Quantum DMG Boost" },
+                { "stat": "Imaginary DMG Boost" }
+              ],
+              "subStats": [
+                "HP%",
+                "HP",
+                "ATK%",
+                "ATK",
+                "DEF%",
+                "DEF",
+                "Speed",
+                "Crit Rate%",
+                "Crit DMG%",
+                "Effect Hit Rate%",
+                "Effect Res%",
+                "Break Effect"
               ]
             }
           }
