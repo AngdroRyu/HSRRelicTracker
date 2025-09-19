@@ -93,7 +93,10 @@
     <!-- Preview / Export -->
     <div class="w-80 border p-4 rounded bg-neutral-800 text-white">
       <h4 class="font-semibold mb-2">Current Relic Preview</h4>
-      <img v-if="imageSrc" :src="imageSrc" :alt="selectedSet?.name || 'Relic Image'" />
+      <div class="mb-4 flex justify-center bg-neutral-700/80 p-2 rounded">
+        <img v-if="imageSrc" :src="imageSrc" :alt="selectedSet?.name || 'Relic Image'" />
+      </div>
+
       <p><strong>Domain:</strong> {{ currentRelic.domain || '—' }}</p>
       <p><strong>Set:</strong> {{ currentRelic.set || '—' }}</p>
       <p><strong>Slot:</strong> {{ currentRelic.slot || '—' }}</p>
@@ -109,7 +112,7 @@
         </ul>
       </div>
     </div>
-    <div class="w-80 border p-4 rounded bg-neutral-800 text-white">
+    <div class="w-80 border p-4 rounded bg-stone-800 text-white">
       <h4 class="font-semibold mb-2">All Logged Relics ({{ props.relics.length }})</h4>
       <ul class="max-h-96 overflow-auto space-y-2">
         <li
@@ -122,13 +125,14 @@
             class="absolute top-2 right-2 px-2 py-1 rounded bg-red-600 hover:bg-red-500 text-white text-xs"
             @click="props.relics.splice(index, 1)"
           >
-            X
+            -
           </button>
 
           <!-- Content -->
           <p class="text-sm"><strong>Date:</strong> {{ r.date }}</p>
-          <p class="text-sm"><strong>Domain:</strong> {{ r.domain }}</p>
           <p class="text-sm"><strong>Set:</strong> {{ r.set }}</p>
+          <p class="text-sm"><strong>Slot:</strong> {{ r.slot }}</p>
+          <p class="text-sm"><strong>Main Stat:</strong> {{ r.mainStat }}</p>
         </li>
       </ul>
     </div>
@@ -138,6 +142,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import relicData from '../data/relics.json'
+import type { LoggedRelic } from '../types/relic'
 
 // ---------------- Types ----------------
 type MainStatEntry = { stat: string; rate?: number }
@@ -145,16 +150,6 @@ type Piece = { mainStats: MainStatEntry[]; subStats: string[] }
 type RelicSet = { name: string; imagePath: string; pieces: Record<string, Piece> }
 type Domain = { name: string; sets: RelicSet[] }
 type RelicData = { domains: Domain[] }
-
-type LoggedSubStat = { stat: string; value: number | string | null }
-type LoggedRelic = {
-  date: string
-  domain: string
-  set: string
-  slot: string
-  mainStat: string
-  subStats: LoggedSubStat[]
-}
 
 // ---------------- State ----------------
 const relicDomains = (relicData as RelicData).domains || []
