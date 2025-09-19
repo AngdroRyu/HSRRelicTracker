@@ -81,5 +81,33 @@ function handleDownload() {
     <pre class="mt-4 p-2 bg-stone-900 rounded text-sm overflow-x-auto max-h-80"
       >{{ JSON.stringify(combined, null, 2) }}
     </pre>
+  <div class="p-4 bg-stone-800 text-white rounded-lg shadow border border-white w-[50%]">
+    <h2 class="text-xl font-bold mb-2">Export Panel</h2>
+
+    <!-- totals -->
+    <p>Current relics: {{ totalCurrent }}</p>
+    <p>Imported relics: {{ totalImported }}</p>
+    <p class="font-semibold mt-2">Combined total: {{ combined.length }}</p>
+
+    <!-- controls -->
+    <div class="flex gap-2 mt-3">
+      <input
+        type="file"
+        accept="application/json"
+        @change="handleImport"
+        class="block bg-neutral-700 rounded text-sm file:bg-blue-600 file:text-white file:px-3 file:py-1 file:rounded file:border-none hover:file:bg-blue-700"
+      />
+      <button
+        @click="handleDownload"
+        class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm font-semibold"
+      >
+        Download JSON
+      </button>
+    </div>
+
+    <!-- JSON preview -->
+    <pre class="mt-4 p-2 bg-stone-900 rounded text-sm overflow-x-auto max-h-80"
+      >{{ JSON.stringify(combined, null, 2) }}
+    </pre>
   </div>
 </template>
