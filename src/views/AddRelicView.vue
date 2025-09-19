@@ -2,7 +2,7 @@
   <div class="p-4 h-full w-full bg-stone-900 text-white">
     <h1 class="text-2xl font-bold mb-4">Add a New Relic</h1>
     <AddRelicForm v-model:relics="farmedRelics" />
-    <ExportPanel :json="exportedJSON" />
+    <ExportPanel :relics="farmedRelics" />
   </div>
 </template>
 
