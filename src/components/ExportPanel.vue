@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { LoggedRelic } from '../types'
+import type { LoggedRelic } from '../types/relic'
 
 const props = defineProps<{
   relics?: LoggedRelic[]
