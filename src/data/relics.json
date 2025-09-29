@@ -2332,7 +2332,7 @@
       "sets": [
         {
           "name": "World-Remaking Deliverer",
-          "imagePath": "",
+          "imagePath": "./../assets/relics/Item_World-Remaking_Deliverer.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
@@ -2418,8 +2418,8 @@
           }
         },
         {
-          "name": "Self-Enshrouding Recluse",
-          "imagePath": "",
+          "name": "Self-Enshrouded Recluse",
+          "imagePath": "./../assets/relics/Item_Self-Enshrouded_Recluse.webp",
           "pieces": {
             "Head": {
               "mainStats": [{ "stat": "HP" }],
