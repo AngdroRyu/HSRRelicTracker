@@ -97,6 +97,7 @@
         <img v-if="imageSrc" :src="imageSrc" :alt="selectedSet?.name || 'Relic Image'" />
       </div>
 
+      <p><strong>Piece:</strong>{{ currentRelic.piece }}</p>
       <p><strong>Domain:</strong> {{ currentRelic.domain || '—' }}</p>
       <p><strong>Set:</strong> {{ currentRelic.set || '—' }}</p>
       <p><strong>Slot:</strong> {{ currentRelic.slot || '—' }}</p>
@@ -139,45 +140,25 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, watch } from 'vue'
 import relicData from '../data/relics.json'
-import type { LoggedRelic } from '../types/relic'
-
-// ---------------- Types ----------------
-type MainStatEntry = { stat: string; rate?: number }
-type Piece = { mainStats: MainStatEntry[]; subStats: string[] }
-type RelicSet = { name: string; imagePath: string; pieces: Record<string, Piece> }
-type Domain = { name: string; sets: RelicSet[] }
-type RelicData = { domains: Domain[] }
+import substatOptions from '@/assets/data/substatValues.js'
+import relicParts from '@/data/relicParts.json'
 
 // ---------------- State ----------------
-const relicDomains = (relicData as RelicData).domains || []
-const domain = ref<string>('')
-const setName = ref<string>('')
-const slot = ref<string>('')
-const mainStat = ref<string>('')
+const relicDomains = relicData.domains || []
+const domain = ref('')
+const setName = ref('')
+const slot = ref('')
+const mainStat = ref('')
 
-const selectedSubStats = ref<string[]>([])
-const subStatValues = ref<Record<string, string | number | null>>({})
+const selectedSubStats = ref([])
+const subStatValues = ref({})
 
 const MAX_SUBSTATS = 4
-const props = defineProps<{ relics: LoggedRelic[] }>()
-const emit = defineEmits<{ (e: 'update:relics', value: LoggedRelic[]): void }>()
-const substatOptions: Record<string, (string | number)[]> = {
-  HP: [33, 38, 42],
-  'HP%': ['3.4%', '3.8%', '4.3%'],
-  ATK: [16, 19, 21],
-  'ATK%': ['3.4%', '3.8%', '4.3%'],
-  DEF: [16, 19, 21],
-  'DEF%': ['4.3%', '4.8%', '5.4%'],
-  Speed: [2],
-  'Crit Rate%': ['2.5%', '2.9%', '3.2%'],
-  'Crit DMG%': ['5.1%', '5.8%', '6.4%'],
-  'Break Effect': ['5.1%', '5.8%', '6.4%'],
-  'Effect Hit Rate%': ['3.4%', '3.8%', '4.3%'],
-  'Effect Res%': ['3.4%', '3.8%', '4.3%'],
-}
+const props = defineProps(['relics'])
+const emit = defineEmits(['update:relics'])
 
 // ---------------- Computeds ----------------
 const selectedDomain = computed(() => relicDomains.find((d) => d.name === domain.value))
@@ -233,6 +214,7 @@ const currentRelic = computed(() => ({
   domain: domain.value,
   set: setName.value,
   slot: slot.value,
+  piece: slot.value,
   mainStat: mainStat.value,
   subStats: selectedSubStats.value.map((stat) => ({
     stat,
@@ -324,7 +306,7 @@ watch(
 function handleSubmit() {
   if (!domain.value || !setName.value || !slot.value || !mainStat.value) return
 
-  const toAdd: LoggedRelic = {
+  const toAdd = {
     date: new Date().toISOString().split('T')[0],
     domain: domain.value,
     set: setName.value,
@@ -345,6 +327,41 @@ function handleSubmit() {
   mainStat.value = ''
   selectedSubStats.value = []
   subStatValues.value = {}
+}
+function fillRelicFromName(relicName) {
+  const info = relicParts[relicName]
+  if (!info) return
+
+  const { set: setNameFromPart, slot: slotFromPart } = info
+
+  // Find the set in relicDomains
+  const domainObj = relicDomains.find((d) => d.sets.some((s) => s.name === setNameFromPart))
+  if (!domainObj) return
+
+  const setObj = domainObj.sets.find((s) => s.name === setNameFromPart)
+  if (!setObj) return
+
+  const piece = setObj.pieces[slotFromPart]
+  if (!piece) return
+
+  // Fill form fields
+  domain.value = domainObj.name
+  setName.value = setNameFromPart
+  slot.value = slotFromPart
+
+  // If only 1 main stat option, auto-fill
+  if (piece.mainStats.length === 1) {
+    mainStat.value = piece.mainStats[0].stat
+  } else {
+    mainStat.value = ''
+  }
+
+  // Clear substats selections
+  selectedSubStats.value = []
+  subStatValues.value = {}
+
+  // Optionally pre-fill allowed substats (for display/filtering)
+  // slotSubStats is computed from set + slot automatically
 }
 
 // reset entire form

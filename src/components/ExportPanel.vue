@@ -1,16 +1,13 @@
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
-import type { LoggedRelic } from '../types/relic'
 
-const props = defineProps<{
-  relics?: LoggedRelic[]
-}>()
+const props = defineProps(['relics'])
 
 // ✅ fallback so it's never undefined
 const relics = computed(() => props.relics ?? [])
 
 // keep track of imported relics separately
-const importedRelics = ref<LoggedRelic[]>([])
+const importedRelics = ref([])
 
 // totals
 const totalCurrent = computed(() => relics.value.length)
@@ -20,15 +17,15 @@ const totalImported = computed(() => importedRelics.value.length)
 const combined = computed(() => [...relics.value, ...importedRelics.value])
 
 // handle JSON file import
-function handleImport(event: Event) {
-  const input = event.target as HTMLInputElement
+function handleImport(event) {
+  const input = event.target
   if (!input.files?.length) return
 
   const file = input.files[0]
   const reader = new FileReader()
   reader.onload = (e) => {
     try {
-      const parsed = JSON.parse(e.target?.result as string) as LoggedRelic[]
+      const parsed = JSON.parse(e.target?.result)
       importedRelics.value.push(...parsed)
     } catch (err) {
       console.error('Invalid JSON file:', err)

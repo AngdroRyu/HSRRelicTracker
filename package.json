@@ -17,6 +17,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "tailwindcss": "^4.1.13",
+    "tesseract.js": "^6.0.1",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
