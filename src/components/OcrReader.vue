@@ -14,7 +14,6 @@ const ocrText = ref('')
 const progress = ref(0)
 const fileInput = ref(null)
 const fileInputKey = ref(0)
-const imageUrl = ref(null)
 const domain = ref('')
 const setName = ref('')
 const slot = ref('')
@@ -88,10 +87,14 @@ async function handleFile(ev) {
 
     // --- Match relic name ---
     const potentialName = extractPotentialName(ocrText.value)
-    console.log('Potential Relic Name:', potentialName)
+    //console.log('Potential Relic Name:', potentialName)
+    if (!/[a-zA-Z]{5,}/.test(potentialName)) {
+      console.warn('Rejected OCR name:', potentialName)
+      return
+    }
     const relicName = matchRelicName(potentialName)
     if (!relicName) return
-    console.log('Matched Relic Name:', relicName)
+    //console.log('Matched Relic Name:', relicName)
 
     // Fill form info
     fillFormFromName(relicName)
@@ -147,26 +150,55 @@ async function handleFile(ev) {
 function cleanOcrText(text) {
   return (
     text
-      // Remove OCR garbage symbols
-      .replace(/[@®£]/g, '')
-      // Normalize Windows newlines
+      // Remove common OCR junk symbols
+      .replace(/[%#&»@®£]/g, '')
+      // Fix broken lines
       .replace(/\r\n/g, '\n')
-      // Remove extra blank lines
       .replace(/\n{2,}/g, '\n')
-      // Trim each line individually
+      // Remove junk standalone lines
       .split('\n')
       .map((line) => line.trim())
-      .filter(Boolean)
+      .filter((line) => line.length > 2 && !/^(Fe|in|;|\(0\))$/i.test(line))
       .join('\n')
   )
 }
 
-function extractPotentialName(nameText) {
-  return nameText.split(/\s{2,}/)[0].trim()
+function extractPotentialName(text) {
+  const lines = text
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+
+  // Join first two lines to catch cases like:
+  // "Watchmaker's Illusory Formal"
+  // "Suit (0)"
+  return lines.slice(0, 2).join(' ')
 }
 
 function matchRelicName(text) {
-  return Object.keys(RelicParts).find((k) => text.includes(k)) || ''
+  if (!text || text.length < 8) return ''
+
+  const normalized = text.toLowerCase()
+
+  let bestMatch = ''
+  let bestScore = 0
+
+  for (const name of Object.keys(RelicParts)) {
+    const words = name.toLowerCase().split(/\s+/)
+    let score = 0
+
+    for (const w of words) {
+      if (normalized.includes(w)) score++
+    }
+
+    // require at least half the words to match
+    if (score >= Math.ceil(words.length / 2) && score > bestScore) {
+      bestScore = score
+      bestMatch = name
+    }
+  }
+
+  return bestMatch
 }
 
 function fillFormFromName(relicName) {
@@ -230,7 +262,7 @@ function resetForm(clearImage = true) {
   relic.mainStat.stat = ''
   relic.mainStat.value = null
   relic.subStatsName = []
-  if (clearImage) imageUrl.value = null
+  if (clearImage) uploadedImage.value = null
   ocrText.value = ''
   progress.value = 0
 }
@@ -266,8 +298,8 @@ function addRelic() {
   resetForm()
   fileInputKey.value += 1 // reset file input
 
-  console.log('Relic added:', newRelic)
-  console.log('Updated relics list:', updatedRelics)
+  // console.log('Relic added:', newRelic)
+  // console.log('Updated relics list:', updatedRelics)
 }
 </script>
 
@@ -315,11 +347,6 @@ function addRelic() {
       <!-- OCR Progress -->
       <div v-if="progress > 0" class="w-full bg-gray-700 rounded h-4 overflow-hidden mt-2">
         <div class="bg-blue-600 h-4" :style="{ width: progress + '%' }"></div>
-      </div>
-
-      <!-- Image Preview -->
-      <div v-if="imageUrl" class="mt-2 flex justify-center">
-        <img :src="imageUrl" alt="Uploaded Relic" class="max-w-full border rounded" />
       </div>
 
       <!-- Domain -->
@@ -454,6 +481,38 @@ function addRelic() {
       >
         Add Relic
       </button>
+    </div>
+    <div class="w-85 border p-4 rounded bg-stone-800 text-white">
+      <h4 class="font-semibold mb-2">All Logged Relics ({{ props.relics.length }})</h4>
+      <ul class="max-h-96 overflow-auto space-y-2">
+        <li
+          v-for="(r, index) in props.relics"
+          :key="index"
+          class="border-b pb-2 last:border-0 relative p-4 rounded bg-neutral-700"
+        >
+          <!-- X Button -->
+          <button
+            class="absolute top-2 right-2 px-2 py-1 rounded bg-red-600 hover:bg-red-500 text-white text-xs"
+            @click="props.relics.splice(index, 1)"
+          >
+            -
+          </button>
+
+          <!-- Content -->
+          <p class="text-sm"><strong>Piece:</strong> {{ r.name }}</p>
+          <p class="text-sm"><strong>Slot:</strong> {{ r.slot }}</p>
+          <p class="text-sm">
+            <strong>Main Stat:</strong> {{ r.mainStat.stat }}:
+            {{ formatStatValue(r.mainStat.stat, r.mainStat.value) }}
+          </p>
+          <p class="text-sm"><strong>Substats:</strong></p>
+          <ul class="list-disc list-inside ml-4">
+            <li v-for="(s, subIndex) in r.subStatsName" :key="subIndex" class="text-sm">
+              {{ s.stat }}: {{ formatStatValue(s.stat, s.value) }}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
