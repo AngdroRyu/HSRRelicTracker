@@ -47,11 +47,8 @@ const selectedSet = computed(() => sets.value.find((s) => s.name === setName.val
 
 // Determine which image to display
 const relicImage = computed(() => {
-  if (selectedSet.value?.imagePath) {
-    return new URL(selectedSet.value.imagePath.replace('./../', '/src/'), import.meta.url).href
-  }
-  if (uploadedImage.value) return uploadedImage.value
-  return ''
+  const image = selectedSet.value?.imagePath
+  return image ? `${import.meta.env.BASE_URL}relics/${image}` : uploadedImage.value || ''
 })
 
 const slotMainStats = computed(() => {
