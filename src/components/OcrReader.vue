@@ -1,10 +1,11 @@
 <script setup>
-import { ref, reactive, computed, nextTick } from 'vue'
+import { ref, reactive, computed, nextTick, watch } from 'vue'
 import Tesseract from 'tesseract.js'
 import RelicParts from '@/data/relicParts.json'
 import relicDomains from '@/data/relics.json'
 import mainStatsBySlot from '@/assets/data/mainStat.js'
 import substatNames from '@/assets/data/substatNames.js'
+import SubstatGrowthValues from '@/data/substatGrowthValues.json'
 
 // --------------------
 // Reactive state
@@ -16,8 +17,20 @@ const fileInput = ref(null)
 const fileInputKey = ref(0)
 const domain = ref('')
 const setName = ref('')
-const slot = ref('')
 const props = defineProps(['relics'])
+// Temporary test relics
+// props.relics.push({
+//   name: 'Test Relic',
+//   set: 'Test Set',
+//   slot: 'Head',
+//   mainStat: { stat: 'ATK', value: 42 },
+//   subStatsName: [
+//     { stat: 'CRIT Rate', value: 10.6, count: 1, colorType: 1 },
+//     { stat: 'ATK', value: 4.3, count: 2, colorType: 2 },
+//     { stat: 'SPD', value: 4, count: 3, colorType: 3 },
+//   ],
+// })
+
 const emit = defineEmits(['update:relics'])
 
 const relic = reactive({
@@ -29,37 +42,55 @@ const relic = reactive({
   subStatsName: [],
   imagePath: '', // optional, for set image
 })
+const rollTable = Object.fromEntries(
+  SubstatGrowthValues.map((r) => [r.stat, [r.values.low, r.values.med, r.values.high]]),
+)
 
 const MAX_SUBSTATS = 4
 
 // --------------------
 // Computed properties
 // --------------------
+// Computed properties
 const sets = computed(() => {
-  const d = relicDomains.domains.find((d) => d.name === domain.value)
-  return d?.sets || []
+  const domainObj = relicDomains.domains.find((d) => d.name === relic.domain)
+  return domainObj?.sets || []
 })
+
+const selectedSet = computed(() => sets.value.find((s) => s.name === relic.set))
+
+const slotMainStats = computed(() => {
+  const pieces = selectedSet.value?.pieces
+  const mainStats = pieces?.[relic.slot]?.mainStats?.map((m) => m.stat)
+  if (!mainStats || mainStats.length === 0) return mainStatsBySlot[relic.slot] || []
+  return mainStats
+})
+
+const slotSubStats = computed(() => selectedSet.value?.pieces?.[relic.slot]?.subStats || [])
+const filteredSubStats = computed(() => slotSubStats.value.filter((s) => s !== relic.mainStat.stat))
+
 const allSubStats = computed(() => {
   return Array.from(new Set([...substatNames]))
 })
-
-const selectedSet = computed(() => sets.value.find((s) => s.name === setName.value))
-
 // Determine which image to display
 const relicImage = computed(() => {
   const image = selectedSet.value?.imagePath
   return image ? `${import.meta.env.BASE_URL}relics/${image}` : uploadedImage.value || ''
 })
 
-const slotMainStats = computed(() => {
-  const pieces = selectedSet.value?.pieces
-  const mainStats = pieces?.[slot.value]?.mainStats?.map((m) => m.stat)
-  if (!mainStats || mainStats.length === 0) return mainStatsBySlot[slot.value] || []
-  return mainStats
-})
+const substatRollPreview = computed(() => {
+  return relic.subStatsName.map((sub) => {
+    // Use normalized & rounded value
+    const normalizedValue = normalizeSubstatValue(sub.stat, sub.value)
+    const rollInfo = detectSubstatRolls(sub.stat, normalizedValue)
 
-const slotSubStats = computed(() => selectedSet.value?.pieces?.[slot.value]?.subStats || [])
-const filteredSubStats = computed(() => slotSubStats.value.filter((s) => s !== relic.mainStat.stat))
+    return {
+      ...sub,
+      rolls: rollInfo?.breakdown ?? null,
+      totalRolls: rollInfo?.totalRolls ?? 0,
+    }
+  })
+})
 
 // --------------------
 // File upload & OCR
@@ -109,7 +140,7 @@ async function handleFile(ev) {
     // --- Extract main stat ---
     const allowedMainStats = slotMainStats.value.length
       ? slotMainStats.value
-      : mainStatsBySlot[slot.value] || []
+      : mainStatsBySlot[relic.slot] || []
 
     const mainStatRegex = /([A-Za-z\s]+)\s+([-+]?[\d.]+)/
     const mainMatch = ocrText.value.match(mainStatRegex)
@@ -203,24 +234,27 @@ function fillFormFromName(relicName) {
   if (!info) return
 
   relic.set = info.set
-  relic.slot = info.slot
-  setName.value = info.set
-
-  const slotKeyMap = {
-    Head: 'Head',
-    Body: 'Body',
-    Hands: 'Hands',
-    Hand: 'Hands',
-    Feet: 'Feet',
-    'Planar Sphere': 'Planar Sphere',
-    'Link Rope': 'Link Rope',
-  }
-  slot.value = slotKeyMap[info.slot] || info.slot
+  relic.slot = info.slot // direct assignment, no slotKeyMap
 
   const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === relic.set))
   relic.domain = domainObj?.name || ''
-  domain.value = relic.domain
 }
+
+watch(
+  () => [relic.set, relic.slot],
+  ([newSet, newSlot]) => {
+    if (!newSet || !newSlot) return
+
+    // Find the relic in RelicParts matching set + slot
+    const matchingName = Object.entries(RelicParts).find(
+      ([name, info]) => info.set === newSet && info.slot === newSlot,
+    )?.[0]
+
+    if (matchingName) {
+      relic.name = matchingName
+    }
+  },
+)
 
 function extractSubStat(text) {
   text = text.replace(/\s+/g, ' ')
@@ -242,16 +276,13 @@ function extractSubStat(text) {
 }
 function parseStatValue(raw) {
   if (!raw) return null
-
   const value = parseFloat(raw)
-
-  return raw.includes('.') ? value : Math.trunc(value)
+  return value
 }
 
 function resetForm(clearImage = true) {
   domain.value = ''
   setName.value = ''
-  slot.value = ''
   relic.name = ''
   relic.set = ''
   relic.slot = ''
@@ -297,6 +328,87 @@ function addRelic() {
 
   // console.log('Relic added:', newRelic)
   // console.log('Updated relics list:', updatedRelics)
+}
+function normalizeSubstatValue(stat, value) {
+  if (value === null) return null
+
+  const percentStats = ['CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Effect RES', 'Break Effect']
+
+  // always percentages
+  if (percentStats.includes(stat)) return value / 100
+
+  // HP, ATK, DEF can be flat or percent
+  const flatStat = ['HP', 'ATK', 'DEF']
+  const percentStat = ['HP%', 'ATK%', 'DEF%']
+
+  if (flatStat.includes(stat)) {
+    // Check if value is too small for flat → treat as percent
+    if (value < 10) {
+      // Use the percent table instead
+      const tableName = stat + '%'
+      const table = rollTable[tableName]
+      if (!table) return value / 100 // fallback
+      return value / 100 // convert to decimal for percent table
+    }
+    return value // flat value matches flat table
+  }
+
+  // percent table already
+  if (percentStat.includes(stat)) return value
+
+  // fallback
+  return value
+}
+
+function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
+  //console.log('--- detectSubstatRolls ---')
+  //console.log('Stat:', stat)
+  //console.log('Observed Value:', observedValue)
+
+  let tableStat = stat
+
+  if (['HP', 'ATK', 'DEF'].includes(stat) && observedValue < 10) {
+    tableStat = stat + '%'
+    //console.log('Using percent table instead for', stat, 'as', tableStat)
+  }
+
+  const values = rollTable[tableStat]
+  //console.log('Roll Table:', values)
+
+  if (!values) return null
+
+  const [low, med, high] = values
+  const percentStats = ['CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Effect RES', 'Break Effect']
+  const tolerance = percentStats.includes(stat) || tableStat.endsWith('%') ? 0.01 : 1
+
+  //console.log('Tolerance:', tolerance)
+
+  let best = null
+  let bestDiff = Infinity
+
+  for (let a = 0; a <= maxRolls; a++) {
+    for (let b = 0; b <= maxRolls - a; b++) {
+      for (let c = 0; c <= maxRolls - a - b; c++) {
+        const rolls = a + b + c
+        if (rolls === 0) continue
+
+        const sum = a * low + b * med + c * high
+        const diff = Math.abs(sum - observedValue)
+
+        if (diff < bestDiff && diff <= tolerance) {
+          bestDiff = diff
+          best = {
+            totalRolls: rolls,
+            breakdown: { low: a, med: b, high: c },
+            sum,
+          }
+        }
+      }
+    }
+  }
+
+  //console.log('Best Roll Match:', best)
+  return best
 }
 </script>
 
@@ -347,7 +459,7 @@ function addRelic() {
       </div>
 
       <!-- Domain -->
-      <select v-model="domain" class="border p-2 rounded w-full bg-stone-800 text-white">
+      <select v-model="relic.domain" class="border p-2 rounded w-full bg-stone-800 text-white">
         <option value="">Select Domain</option>
         <option v-for="d in relicDomains.domains || []" :key="d.name" :value="d.name">
           {{ d.name }}
@@ -355,7 +467,7 @@ function addRelic() {
       </select>
 
       <!-- Set -->
-      <select v-model="setName" class="border p-2 rounded w-full bg-stone-800 text-white">
+      <select v-model="relic.set" class="border p-2 rounded w-full bg-stone-800 text-white">
         <option value="">Select Set</option>
         <option v-for="s in sets || []" :key="s.name" :value="s.name">
           {{ s.name }}
@@ -363,7 +475,7 @@ function addRelic() {
       </select>
 
       <!-- Slot -->
-      <select v-model="slot" class="border p-2 rounded w-full bg-stone-800 text-white">
+      <select v-model="relic.slot" class="border p-2 rounded w-full bg-stone-800 text-white">
         <option value="">Select Slot</option>
         <option v-for="s in Object.keys(selectedSet?.pieces || {})" :key="s" :value="s">
           {{ s }}
@@ -465,10 +577,27 @@ function addRelic() {
       <div class="mt-2">
         <strong>Substats:</strong>
         <ul class="list-none list-inside mt-1 mb-4">
-          <li v-for="s in relic.subStatsName || []" :key="s.stat">
+          <li
+            v-for="(s, i) in substatRollPreview"
+            :key="`${s.stat}-${i}`"
+            class="flex items-center gap-2 text-sm"
+          >
             {{ s.stat }}: {{ formatStatValue(s.stat, s.value) }}
+            <template v-if="s.rolls">
+              <template v-for="(count, tier) in s.rolls" :key="tier">
+                <template v-for="i in count" :key="i">
+                  <span
+                    class="w-4 h-4 rounded"
+                    :class="{
+                      'bg-stone-100': tier === 'low',
+                      'bg-blue-400': tier === 'med',
+                      'bg-blue-600': tier === 'high',
+                    }"
+                  ></span>
+                </template>
+              </template>
+            </template>
           </li>
-          <li v-if="!relic.subStatsName?.length">—</li>
         </ul>
       </div>
       <button
@@ -503,10 +632,16 @@ function addRelic() {
             {{ formatStatValue(r.mainStat.stat, r.mainStat.value) }}
           </p>
           <p class="text-sm"><strong>Substats:</strong></p>
-          <ul class="list-disc list-inside ml-4">
-            <li v-for="(s, subIndex) in r.subStatsName" :key="subIndex" class="text-sm">
+          <ul class="list-none list-inside mt-1 mb-4">
+            <li
+              v-for="(s, subIndex) in r.subStatsName"
+              :key="subIndex"
+              class="flex items-center gap-2 text-sm"
+            >
+              <!-- Stat text -->
               {{ s.stat }}: {{ formatStatValue(s.stat, s.value) }}
             </li>
+            <li v-if="!r.subStatsName?.length">—</li>
           </ul>
         </li>
       </ul>
