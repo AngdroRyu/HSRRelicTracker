@@ -18,6 +18,10 @@ const fileInputKey = ref(0)
 const domain = ref('')
 const setName = ref('')
 const props = defineProps(['relics'])
+const fileQueue = ref([])
+const pendingRelics = ref([])
+const currentIndex = ref(0)
+
 // Temporary test relics
 // props.relics.push({
 //   name: 'Test Relic',
@@ -102,78 +106,102 @@ const substatRollPreview = computed(() => {
 // --------------------
 // File upload & OCR
 // --------------------
-async function handleFile(ev) {
-  const file = ev.target.files[0]
-  if (!file) return
-  resetForm(false)
+async function handleFiles(ev) {
+  const files = Array.from(ev.target.files)
+  if (!files.length) return
+
+  fileQueue.value.push(...files)
+
+  // If nothing is being reviewed, start processing
+  if (pendingRelics.value.length === 0) {
+    await processNextFile()
+  }
+
+  fileInputKey.value += 1
+}
+async function processNextFile() {
+  if (!fileQueue.value.length) return
+
+  const file = fileQueue.value.shift()
+  resetForm(false) // keep uploadedImage for preview
+
   uploadedImage.value = URL.createObjectURL(file)
-  ocrText.value = ''
-  progress.value = 0
+
+  const localRelic = {
+    name: '',
+    set: '',
+    slot: '',
+    domain: '',
+    mainStat: { stat: '', value: null },
+    subStatsName: [],
+    imagePath: '',
+  }
 
   try {
     const { data } = await Tesseract.recognize(uploadedImage.value, 'eng', {
       logger: (m) => {
-        if (m.status === 'recognizing text') progress.value = Math.round(m.progress * 100)
+        if (m.status === 'recognizing text') {
+          progress.value = Math.round(m.progress * 100)
+        }
       },
     })
-    console.log('OCR Data:', data)
-    ocrText.value = cleanOcrText(data.text)
-    console.log('Cleaned OCR Text:', ocrText.value)
 
-    // --- Match relic name ---
-    const potentialName = extractPotentialName(ocrText.value)
-    //console.log('Potential Relic Name:', potentialName)
-    if (!/[a-zA-Z]{5,}/.test(potentialName)) {
-      console.warn('Rejected OCR name:', potentialName)
-      return
-    }
+    console.log('OCR Data:', data)
+
+    // --- Step 1: Clean OCR text ---
+    let text = cleanOcrText(data.text)
+    text = text.replace(/[@&®£]/g, '').trim() // remove common OCR junk
+    console.log('Cleaned OCR Text:', text)
+
+    // --- Step 2: Match relic name ---
+    const potentialName = extractPotentialName(text)
     const relicName = matchRelicName(potentialName)
     if (!relicName) return
-    //console.log('Matched Relic Name:', relicName)
 
-    // Fill form info
-    fillFormFromName(relicName)
+    localRelic.name = relicName
+    fillFormFromNameLocal(localRelic, relicName) // fill slot, set, etc.
 
-    relic.name = relicName
-    relic.mainStat.stat = ''
-    relic.mainStat.value = null
-    relic.subStatsName = []
+    text = text.replace(relicName, '').trim()
 
-    // Remove relic name from OCR text
-    ocrText.value = ocrText.value.replace(relicName, '').trim()
-
-    await nextTick()
-
-    // --- Extract main stat ---
-    const allowedMainStats = slotMainStats.value.length
-      ? slotMainStats.value
-      : mainStatsBySlot[relic.slot] || []
-
-    const mainStatRegex = /([A-Za-z\s]+)\s+([-+]?[\d.]+)/
-    const mainMatch = ocrText.value.match(mainStatRegex)
-    if (mainMatch) {
-      const [fullText, statName, statValue] = mainMatch
-      const matchedStat = allowedMainStats.find((s) => statName.includes(s.replace('%', '')))
-      if (matchedStat) {
-        relic.mainStat.stat = matchedStat
-        relic.mainStat.value = parseStatValue(statValue)
-        ocrText.value = ocrText.value.replace(fullText, '').trim()
+    // --- Step 3: Extract Main Stat (safe & simple) ---
+    const allowedMainStats = mainStatsBySlot[localRelic.slot] || []
+    let mainStatFound = false
+    for (const line of text.split('\n')) {
+      for (const stat of allowedMainStats.sort((a, b) => b.length - a.length)) {
+        const regex = new RegExp(`${stat.replace(/\s+/g, '\\s+')}\\s+([-+]?\\d+(?:\\.\\d+)?)`, 'i')
+        const match = line.match(regex)
+        if (match) {
+          localRelic.mainStat.stat = stat
+          localRelic.mainStat.value = parseStatValue(match[1])
+          mainStatFound = true
+          text = text.replace(match[0], '').trim()
+          console.log('Extracted main stat:', stat, match[1])
+          break
+        }
       }
+      if (mainStatFound) break
     }
 
-    // --- Extract substats ---
+    // --- Step 4: Extract Substats (line-by-line) ---
+    localRelic.subStatsName = []
     for (let i = 0; i < MAX_SUBSTATS; i++) {
-      const res = extractSubStat(ocrText.value)
+      const res = extractSubStat(text)
       if (!res.stat) break
-      relic.subStatsName.push({ stat: res.stat, value: res.value })
-      ocrText.value = res.remainingText
+      localRelic.subStatsName.push({ stat: res.stat, value: res.value })
+      text = res.remainingText
     }
 
-    // --- Set domain and image path ---
-    const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === relic.set))
-    relic.domain = domainObj?.name || ''
-    domain.value = relic.domain
-    relic.imagePath = selectedSet.value?.imagePath || ''
+    // --- Step 5: Domain & Image Path ---
+    const domainObj = relicDomains.domains.find((d) =>
+      d.sets.some((s) => s.name === localRelic.set),
+    )
+    localRelic.domain = domainObj?.name || ''
+    localRelic.imagePath = selectedSet.value?.imagePath || ''
+    domain.value = localRelic.domain
+
+    // --- Step 6: Load into editor for manual review ---
+    console.log('Extracted relic data:', localRelic)
+    Object.assign(relic, JSON.parse(JSON.stringify(localRelic)))
   } catch (err) {
     console.error('OCR error:', err)
   }
@@ -185,11 +213,19 @@ async function handleFile(ev) {
 function cleanOcrText(text) {
   return (
     text
+      // Fix elemental icon misreads (Lightning, Fire, etc.)
+      .replace(
+        /^\s*\d+%\s*(Lightning|Fire|Ice|Wind|Quantum|Imaginary)\s+DMG/gi,
+        (_, element) => `${element} DMG`,
+      )
+
       // Remove common OCR junk symbols
       .replace(/[%#&»@®£]/g, '')
+
       // Fix broken lines
       .replace(/\r\n/g, '\n')
       .replace(/\n{2,}/g, '\n')
+
       // Remove junk standalone lines
       .split('\n')
       .map((line) => line.trim())
@@ -211,6 +247,7 @@ function extractPotentialName(text) {
 }
 
 function matchRelicName(text) {
+  console.log('Matching relic name from text:', text)
   if (!text || text.length < 8) return ''
 
   const normalized = text.toLowerCase()
@@ -236,15 +273,15 @@ function matchRelicName(text) {
   return bestMatch
 }
 
-function fillFormFromName(relicName) {
+function fillFormFromNameLocal(target, relicName) {
   const info = RelicParts[relicName]
   if (!info) return
 
-  relic.set = info.set
-  relic.slot = info.slot
+  target.set = info.set
+  target.slot = info.slot
 
-  const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === relic.set))
-  relic.domain = domainObj?.name || ''
+  const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === target.set))
+  target.domain = domainObj?.name || ''
 }
 
 watch(
@@ -301,6 +338,33 @@ function resetForm(clearImage = true) {
   ocrText.value = ''
   progress.value = 0
 }
+function clearCurrentAndNext() {
+  // discard current relic + image
+  resetForm(false)
+
+  if (uploadedImage.value) {
+    URL.revokeObjectURL(uploadedImage.value)
+    uploadedImage.value = null
+  }
+
+  progress.value = 0
+
+  // move to next file in queue
+  processNextFile()
+}
+
+function clearAllUploads() {
+  resetForm()
+
+  if (uploadedImage.value) {
+    URL.revokeObjectURL(uploadedImage.value)
+    uploadedImage.value = null
+  }
+
+  fileQueue.value = []
+  progress.value = 0
+}
+
 function addSubstat() {
   if (relic.subStatsName.length >= MAX_SUBSTATS) return
   relic.subStatsName.push({ stat: '', value: null })
@@ -326,16 +390,14 @@ function addRelic() {
     subStatsName: relic.subStatsName.map((s) => ({ ...s })),
   }
 
-  const updatedRelics = [...props.relics, newRelic]
+  emit('update:relics', [...props.relics, newRelic])
 
-  emit('update:relics', updatedRelics)
+  resetForm(false)
 
-  resetForm()
-  fileInputKey.value += 1 // reset file input
-
-  // console.log('Relic added:', newRelic)
-  // console.log('Updated relics list:', updatedRelics)
+  // Move to next queued image
+  processNextFile()
 }
+
 function normalizeSubstatValue(stat, value) {
   if (value == null) return null
 
@@ -403,6 +465,8 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
 
 <template>
   <div class="flex items-start justify-center gap-6 p-6">
+    <p class="text-xs text-gray-400">Remaining uploads: {{ fileQueue.length }}</p>
+
     <!-- LEFT: Uploaded Image -->
     <div class="w-64 sticky top-6">
       <div class="border rounded bg-neutral-800 p-2 flex justify-center items-center">
@@ -429,8 +493,19 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
         >
           Upload Image
         </button>
-        <button @click="resetForm" class="flex-1 px-4 py-2 rounded bg-gray-600 hover:bg-gray-500">
+        <button
+          @click="clearCurrentAndNext"
+          :disabled="!uploadedImage && !fileQueue.length"
+          class="flex-1 px-4 py-2 rounded bg-gray-600 hover:bg-gray-500 disabled:opacity-50"
+        >
           Clear
+        </button>
+
+        <button
+          @click="clearAllUploads"
+          class="flex-1 px-4 py-2 rounded bg-red-700 hover:bg-red-600"
+        >
+          Clear All
         </button>
       </div>
       <input
@@ -438,8 +513,9 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
         ref="fileInput"
         :key="fileInputKey"
         class="hidden"
-        @change="handleFile"
+        @change="handleFiles"
         accept="image/*"
+        multiple
       />
 
       <!-- OCR Progress -->
