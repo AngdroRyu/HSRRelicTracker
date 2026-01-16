@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AddRelicView from '../views/AddRelicView.vue'
+import ChartView from '../views/ChartView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,12 @@ const router = createRouter({
       name: 'RelicForm',
       component: AddRelicView,
       meta: { title: 'Add Relic - HSRRelic Tracker' },
+    },
+    {
+      path: '/chart',
+      name: 'Chart',
+      component: ChartView,
+      meta: { title: 'Relic Chart - HSRRelic Tracker' },
     },
   ],
   scrollBehavior(to, from, savedPosition) {

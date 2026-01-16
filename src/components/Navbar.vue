@@ -6,7 +6,7 @@
     <div class="space-x-4">
       <router-link to="/" class="hover:text-blue-400 transition">Home</router-link>
       <router-link to="/add-relic" class="hover:text-blue-400 transition">Add Relic</router-link>
-      <router-link to="/tracker" class="hover:text-blue-400 transition">Tracker</router-link>
+      <router-link to="/chart" class="hover:text-blue-400 transition">Charts</router-link>
     </div>
   </nav>
 </template>

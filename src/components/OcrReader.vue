@@ -10,7 +10,7 @@ import SubstatGrowthValues from '@/data/substatGrowthValues.json'
 // --------------------
 // Reactive state
 // --------------------
-const uploadedImage = ref(null) // keeps the uploaded file
+const uploadedImage = ref(null)
 const ocrText = ref('')
 const progress = ref(0)
 const fileInput = ref(null)
@@ -33,6 +33,12 @@ const props = defineProps(['relics'])
 
 const emit = defineEmits(['update:relics'])
 
+function removeRelic(index) {
+  const updated = [...props.relics]
+  updated.splice(index, 1)
+  emit('update:relics', updated)
+}
+
 const relic = reactive({
   name: '',
   set: '',
@@ -51,7 +57,7 @@ const MAX_SUBSTATS = 4
 // --------------------
 // Computed properties
 // --------------------
-// Computed properties
+// Mental note: computed for filters, mapping, comparisons, and selections
 const sets = computed(() => {
   const domainObj = relicDomains.domains.find((d) => d.name === relic.domain)
   return domainObj?.sets || []
@@ -72,6 +78,7 @@ const filteredSubStats = computed(() => slotSubStats.value.filter((s) => s !== r
 const allSubStats = computed(() => {
   return Array.from(new Set([...substatNames]))
 })
+
 // Determine which image to display
 const relicImage = computed(() => {
   const image = selectedSet.value?.imagePath
@@ -199,7 +206,7 @@ function extractPotentialName(text) {
 
   // Join first two lines to catch cases like:
   // "Watchmaker's Illusory Formal"
-  // "Suit (0)"
+  // "Suit"
   return lines.slice(0, 2).join(' ')
 }
 
@@ -234,7 +241,7 @@ function fillFormFromName(relicName) {
   if (!info) return
 
   relic.set = info.set
-  relic.slot = info.slot // direct assignment, no slotKeyMap
+  relic.slot = info.slot
 
   const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === relic.set))
   relic.domain = domainObj?.name || ''
@@ -330,58 +337,42 @@ function addRelic() {
   // console.log('Updated relics list:', updatedRelics)
 }
 function normalizeSubstatValue(stat, value) {
-  if (value === null) return null
+  if (value == null) return null
 
-  const percentStats = ['CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Effect RES', 'Break Effect']
+  const percentOnlyStats = [
+    'CRIT Rate',
+    'CRIT DMG',
+    'Effect Hit Rate',
+    'Effect RES',
+    'Break Effect',
+  ]
 
-  // always percentages
-  if (percentStats.includes(stat)) return value / 100
-
-  // HP, ATK, DEF can be flat or percent
-  const flatStat = ['HP', 'ATK', 'DEF']
-  const percentStat = ['HP%', 'ATK%', 'DEF%']
-
-  if (flatStat.includes(stat)) {
-    // Check if value is too small for flat → treat as percent
-    if (value < 10) {
-      // Use the percent table instead
-      const tableName = stat + '%'
-      const table = rollTable[tableName]
-      if (!table) return value / 100 // fallback
-      return value / 100 // convert to decimal for percent table
-    }
-    return value // flat value matches flat table
+  // Always percent-based stats
+  if (percentOnlyStats.includes(stat)) {
+    return value / 100
   }
 
-  // percent table already
-  if (percentStat.includes(stat)) return value
+  // ATK / DEF / HP:
+  // decimal → percent, integer → flat
+  if (['ATK', 'DEF', 'HP'].includes(stat)) {
+    return Number.isInteger(value) ? value : value / 100
+  }
 
-  // fallback
+  // Everything else (SPD, etc.)
   return value
 }
 
 function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
-  //console.log('--- detectSubstatRolls ---')
-  //console.log('Stat:', stat)
-  //console.log('Observed Value:', observedValue)
-
-  let tableStat = stat
-
-  if (['HP', 'ATK', 'DEF'].includes(stat) && observedValue < 10) {
-    tableStat = stat + '%'
-    //console.log('Using percent table instead for', stat, 'as', tableStat)
-  }
+  const tableStat =
+    ['ATK', 'DEF', 'HP'].includes(stat) && !Number.isInteger(observedValue * 100)
+      ? stat + '%'
+      : stat
 
   const values = rollTable[tableStat]
-  //console.log('Roll Table:', values)
-
   if (!values) return null
 
+  const tolerance = tableStat.endsWith('%') ? 0.01 : 1
   const [low, med, high] = values
-  const percentStats = ['CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Effect RES', 'Break Effect']
-  const tolerance = percentStats.includes(stat) || tableStat.endsWith('%') ? 0.01 : 1
-
-  //console.log('Tolerance:', tolerance)
 
   let best = null
   let bestDiff = Infinity
@@ -390,7 +381,7 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
     for (let b = 0; b <= maxRolls - a; b++) {
       for (let c = 0; c <= maxRolls - a - b; c++) {
         const rolls = a + b + c
-        if (rolls === 0) continue
+        if (!rolls) continue
 
         const sum = a * low + b * med + c * high
         const diff = Math.abs(sum - observedValue)
@@ -400,14 +391,12 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
           best = {
             totalRolls: rolls,
             breakdown: { low: a, med: b, high: c },
-            sum,
           }
         }
       }
     }
   }
 
-  //console.log('Best Roll Match:', best)
   return best
 }
 </script>
@@ -616,10 +605,9 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
           :key="index"
           class="border-b pb-2 last:border-0 relative p-4 rounded bg-neutral-700"
         >
-          <!-- X Button -->
           <button
             class="absolute top-2 right-2 px-2 py-1 rounded bg-red-600 hover:bg-red-500 text-white text-xs"
-            @click="props.relics.splice(index, 1)"
+            @click="removeRelic(index)"
           >
             -
           </button>

@@ -1,42 +1,55 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps(['relics'])
+const emit = defineEmits(['update:relics'])
 
-// ✅ fallback so it's never undefined
+// Fallback to an empty array if props.relics is undefined
 const relics = computed(() => props.relics ?? [])
 
-// keep track of imported relics separately
-const importedRelics = ref([])
-
-// totals
+// Total relics
 const totalCurrent = computed(() => relics.value.length)
-const totalImported = computed(() => importedRelics.value.length)
 
-// merge preview
-const combined = computed(() => [...relics.value, ...importedRelics.value])
-
-// handle JSON file import
+// --------------------
+// JSON Import
+// --------------------
 function handleImport(event) {
-  const input = event.target
-  if (!input.files?.length) return
+  const file = event.target.files?.[0]
+  if (!file) return
 
-  const file = input.files[0]
   const reader = new FileReader()
   reader.onload = (e) => {
     try {
-      const parsed = JSON.parse(e.target?.result)
-      importedRelics.value.push(...parsed)
+      const fileText = e.target?.result
+      if (!fileText) return
+
+      let parsed = JSON.parse(fileText)
+
+      // Accept either array or { relics: [...] }
+      if (!Array.isArray(parsed)) {
+        if (parsed.relics && Array.isArray(parsed.relics)) {
+          parsed = parsed.relics
+        } else {
+          console.error('JSON must be an array or { "relics": [...] }')
+          return
+        }
+      }
+
+      // Merge into parent relics via emit
+      emit('update:relics', [...(props.relics ?? []), ...parsed])
     } catch (err) {
       console.error('Invalid JSON file:', err)
     }
   }
+
   reader.readAsText(file)
 }
 
-// export combined JSON as file
+// --------------------
+// JSON Export
+// --------------------
 function handleDownload() {
-  const dataStr = JSON.stringify(combined.value, null, 2)
+  const dataStr = JSON.stringify(props.relics ?? [], null, 2)
   const blob = new Blob([dataStr], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
 
@@ -53,12 +66,10 @@ function handleDownload() {
   <div class="p-4 bg-stone-800 text-white rounded-lg shadow border border-white w-[50%]">
     <h2 class="text-xl font-bold mb-2">Export Panel</h2>
 
-    <!-- totals -->
-    <p>Current relics: {{ totalCurrent }}</p>
-    <p>Imported relics: {{ totalImported }}</p>
-    <p class="font-semibold mt-2">Combined total: {{ combined.length }}</p>
+    <!-- Totals -->
+    <p>Total relics: {{ totalCurrent }}</p>
 
-    <!-- controls -->
+    <!-- Controls -->
     <div class="flex gap-2 mt-3">
       <input
         type="file"
@@ -74,9 +85,9 @@ function handleDownload() {
       </button>
     </div>
 
-    <!-- JSON preview -->
-    <pre class="mt-4 p-2 bg-stone-900 rounded text-sm overflow-x-auto max-h-80"
-      >{{ JSON.stringify(combined, null, 2) }}
-    </pre>
+    <!-- JSON Preview -->
+    <pre class="mt-4 p-2 bg-stone-900 rounded text-sm overflow-x-auto max-h-80">{{
+      JSON.stringify(props.relics ?? [], null, 2)
+    }}</pre>
   </div>
 </template>
