@@ -161,6 +161,7 @@ async function processNextFile() {
     localRelic.name = relicName
     fillFormFromNameLocal(localRelic, relicName) // fill slot, set, etc.
 
+    console.log('Matched relic name:', relicName)
     text = text.replace(relicName, '').trim()
 
     // --- Step 3: Extract Main Stat (safe & simple) ---

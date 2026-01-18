@@ -13,7 +13,7 @@ const mainStatsBySlot = {
   ],
   'Link Rope': ['HP', 'ATK', 'DEF', 'Break Effect', 'Energy Regeneration Rate'],
   Head: ['HP'],
-  Body: ['HP', 'ATK', 'DEF', 'CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Outgoing Healing'],
+  Body: ['HP', 'ATK', 'DEF', 'CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Outgoing Healing Boost'],
   Hand: ['ATK'],
   Feet: ['HP', 'Speed', 'DEF', 'ATK'],
 }
