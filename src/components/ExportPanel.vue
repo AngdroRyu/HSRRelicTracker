@@ -10,6 +10,13 @@ const relics = computed(() => props.relics ?? [])
 // Total relics
 const totalCurrent = computed(() => relics.value.length)
 
+function clearAllRelics() {
+  if (!relics.value.length) return
+  if (confirm('Clear all loaded relics?')) {
+    emit('update:relics', [])
+  }
+}
+
 // --------------------
 // JSON Import
 // --------------------
@@ -77,6 +84,14 @@ function handleDownload() {
         @change="handleImport"
         class="block bg-neutral-700 rounded text-sm file:bg-blue-600 file:text-white file:px-3 file:py-1 file:rounded file:border-none hover:file:bg-blue-700"
       />
+      <button
+        class="px-3 py-1 bg-red-600 hover:bg-red-700 rounded text-sm font-semibold danger"
+        @click="clearAllRelics"
+        :disabled="!totalCurrent"
+      >
+        Clear
+      </button>
+
       <button
         @click="handleDownload"
         class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm font-semibold"

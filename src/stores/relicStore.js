@@ -17,5 +17,9 @@ export const useRelicStore = defineStore('relics', () => {
     { deep: true },
   )
 
-  return { relics }
+  function clearRelics() {
+    relics.value = []
+  }
+
+  return { relics, clearRelics }
 })
