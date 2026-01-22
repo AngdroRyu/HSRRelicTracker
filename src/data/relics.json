@@ -580,6 +580,27 @@
           }
         }
       ]
+    },
+    {
+      "name": "Divergent Universe: Within the West Wind",
+      "sets": [
+        {
+          "name": "Tengoku@Livestream",
+          "imagePath": "Item_Tengoku_Livestream.webp",
+          "pieces": {
+            "Link Rope": {},
+            "Planar Sphere": {}
+          }
+        },
+        {
+          "name": "Amphoreus, The Eternal Land",
+          "imagePath": "Item_Amphoreus,_The_Eternal_Land.webp",
+          "pieces": {
+            "Link Rope": {},
+            "Planar Sphere": {}
+          }
+        }
+      ]
     }
   ]
 }
