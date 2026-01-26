@@ -15,6 +15,6 @@ const mainStatsBySlot = {
   Head: ['HP'],
   Body: ['HP', 'ATK', 'DEF', 'CRIT Rate', 'CRIT DMG', 'Effect Hit Rate', 'Outgoing Healing Boost'],
   Hand: ['ATK'],
-  Feet: ['HP', 'Speed', 'DEF', 'ATK'],
+  Feet: ['HP', 'SPD', 'DEF', 'ATK'],
 }
 export default mainStatsBySlot
