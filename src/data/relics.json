@@ -588,8 +588,8 @@
           "name": "Tengoku@Livestream",
           "imagePath": "Item_Tengoku_Livestream.webp",
           "pieces": {
-            "Link Rope": "Livestream's Protean Vistas",
-            "Planar Sphere": "Livestream's Chatter Banter"
+            "Link Rope": "Livestream's Chatter Banter",
+            "Planar Sphere": "Livestream's Protean Vistas"
           }
         },
         {
