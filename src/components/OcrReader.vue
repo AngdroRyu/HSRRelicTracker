@@ -187,22 +187,29 @@ async function processNextFile() {
     text = text.replace(matchedName, '').trim()
 
     // --- Step 3: Extract Main Stat ---
-    const allowedMainStats = mainStatsBySlot[localRelic.slot] || []
-    let mainStatFound = false
-    for (const line of text.split('\n')) {
-      for (const stat of allowedMainStats.sort((a, b) => b.length - a.length)) {
-        const regex = new RegExp(`${stat.replace(/\s+/g, '\\s+')}\\s+([-+]?\\d+(?:\\.\\d+)?)`, 'i')
-        const match = line.match(regex)
-        if (match) {
-          localRelic.mainStat.stat = stat
-          localRelic.mainStat.value = parseStatValue(match[1])
-          mainStatFound = true
-          text = text.replace(match[0], '').trim()
-          console.log('Extracted main stat:', stat, match[1])
-          break
-        }
+    const statLine = text.split('\n')[0] || '' // first line after removing relic name
+    let mainMatch = statLine.match(/([A-Za-z\s%]+)\s+([-+]?\d+(\.\d+)?)/)
+
+    if (mainMatch) {
+      let statName = mainMatch[1].trim()
+      const statValue = parseFloat(mainMatch[2])
+
+      // Get allowed main stats for this slot
+      const allowedStats = mainStatsBySlot[localRelic.slot] || []
+
+      // Try to match OCR result to allowed stats (case-insensitive, partial match)
+      const matchedStat = allowedStats.find((s) => statName.toLowerCase().includes(s.toLowerCase()))
+
+      if (matchedStat) {
+        localRelic.mainStat.stat = matchedStat
+        localRelic.mainStat.value = statValue
+        text = text.replace(statLine, '').trim()
+        console.log('Extracted main stat:', localRelic.mainStat.stat, localRelic.mainStat.value)
+      } else {
+        console.warn('Main stat not recognized:', statName)
       }
-      if (mainStatFound) break
+    } else {
+      console.warn('No main stat found on line:', statLine)
     }
 
     // --- Step 4: Extract Substats ---
