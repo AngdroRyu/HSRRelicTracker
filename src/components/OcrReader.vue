@@ -102,6 +102,11 @@ const substatRollPreview = computed(() => {
     }
   })
 })
+const hasInvalidSubstats = computed(() => {
+  return relic.subStatsName.some(
+    (s) => !s.stat || s.value === null || s.value === undefined || s.value === '',
+  )
+})
 
 // --------------------
 // File upload & OCR
@@ -657,12 +662,13 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
         </ul>
       </div>
       <button
-        class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white"
+        class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-50 disabled:cursor-not-allowed"
         @click="addRelic"
-        :disabled="relic.name == ''"
+        :disabled="relic.name === '' || hasInvalidSubstats"
       >
         Add Relic
       </button>
+      <p v-if="hasInvalidSubstats" class="text-xs text-red-400">All substats must have a value</p>
     </div>
     <div class="w-85 border p-4 rounded bg-stone-800 text-white">
       <h4 class="font-semibold mb-2">All Logged Relics ({{ props.relics.length }})</h4>

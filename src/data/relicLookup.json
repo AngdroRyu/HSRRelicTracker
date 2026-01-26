@@ -986,15 +986,15 @@
     "domain": "Divergent Universe: Moonlit Blood",
     "imagePath": "Item_Arcadia_of_Woven_Dreams.webp"
   },
-  "Livestream's Protean Vistas": {
-    "name": "Livestream's Protean Vistas",
+  "Livestream's Chatter Banter": {
+    "name": "Livestream's Chatter Banter",
     "set": "Tengoku@Livestream",
     "slot": "Link Rope",
     "domain": "Divergent Universe: Within the West Wind",
     "imagePath": "Item_Tengoku_Livestream.webp"
   },
-  "Livestream's Chatter Banter": {
-    "name": "Livestream's Chatter Banter",
+  "Livestream's Protean Vistas": {
+    "name": "Livestream's Protean Vistas",
     "set": "Tengoku@Livestream",
     "slot": "Planar Sphere",
     "domain": "Divergent Universe: Within the West Wind",
