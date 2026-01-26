@@ -1,11 +1,11 @@
 <script setup>
 import { ref, reactive, computed, nextTick, watch } from 'vue'
 import Tesseract from 'tesseract.js'
-import RelicParts from '@/data/relicParts.json'
 import relicDomains from '@/data/relics.json'
 import mainStatsBySlot from '@/assets/data/mainStat.js'
 import substatNames from '@/assets/data/substatNames.js'
 import SubstatGrowthValues from '@/data/substatGrowthValues.json'
+import relicLookup from '@/data/relicLookup.json'
 
 // --------------------
 // Reactive state
@@ -124,7 +124,6 @@ async function processNextFile() {
 
   const file = fileQueue.value.shift()
   resetForm(false) // keep uploadedImage for preview
-
   uploadedImage.value = URL.createObjectURL(file)
 
   const localRelic = {
@@ -153,18 +152,41 @@ async function processNextFile() {
     text = text.replace(/[@&®£]/g, '').trim() // remove common OCR junk
     console.log('Cleaned OCR Text:', text)
 
-    // --- Step 2: Match relic name ---
-    const potentialName = extractPotentialName(text)
-    const relicName = matchRelicName(potentialName)
-    if (!relicName) return
+    // --- Step 2: Match relic name using relicLookup.json ---
+    let matchedName = ''
+    let bestScore = 0
+    const normalizedText = text.toLowerCase()
 
-    localRelic.name = relicName
-    fillFormFromNameLocal(localRelic, relicName) // fill slot, set, etc.
+    for (const name of Object.keys(relicLookup)) {
+      const words = name.toLowerCase().split(/\s+/)
+      let score = 0
+      for (const w of words) if (normalizedText.includes(w)) score++
+      if (score >= Math.ceil(words.length / 2) && score > bestScore) {
+        bestScore = score
+        matchedName = name
+      }
+    }
 
-    console.log('Matched relic name:', relicName)
-    text = text.replace(relicName, '').trim()
+    if (!matchedName) {
+      console.warn('No relic found for OCR text:', text)
+      return
+    }
 
-    // --- Step 3: Extract Main Stat (safe & simple) ---
+    const relicData = relicLookup[matchedName]
+
+    // Fill localRelic directly
+    localRelic.name = relicData.name || matchedName
+    localRelic.set = relicData.set
+    localRelic.slot = relicData.slot
+    localRelic.domain = relicData.domain || ''
+    localRelic.imagePath = relicData.imagePath || ''
+
+    console.log('Matched relic from lookup:', localRelic)
+
+    // Remove matched name from text for parsing stats
+    text = text.replace(matchedName, '').trim()
+
+    // --- Step 3: Extract Main Stat ---
     const allowedMainStats = mainStatsBySlot[localRelic.slot] || []
     let mainStatFound = false
     for (const line of text.split('\n')) {
@@ -183,7 +205,7 @@ async function processNextFile() {
       if (mainStatFound) break
     }
 
-    // --- Step 4: Extract Substats (line-by-line) ---
+    // --- Step 4: Extract Substats ---
     localRelic.subStatsName = []
     for (let i = 0; i < MAX_SUBSTATS; i++) {
       const res = extractSubStat(text)
@@ -192,16 +214,7 @@ async function processNextFile() {
       text = res.remainingText
     }
 
-    // --- Step 5: Domain & Image Path ---
-    const domainObj = relicDomains.domains.find((d) =>
-      d.sets.some((s) => s.name === localRelic.set),
-    )
-    localRelic.domain = domainObj?.name || ''
-    localRelic.imagePath = selectedSet.value?.imagePath || ''
-    domain.value = localRelic.domain
-
-    // --- Step 6: Load into editor for manual review ---
-    console.log('Extracted relic data:', localRelic)
+    // --- Step 5: Load into editor for manual review ---
     Object.assign(relic, JSON.parse(JSON.stringify(localRelic)))
   } catch (err) {
     console.error('OCR error:', err)
@@ -241,48 +254,18 @@ function extractPotentialName(text) {
     .map((l) => l.trim())
     .filter(Boolean)
 
-  // Join first two lines to catch cases like:
-  // "Watchmaker's Illusory Formal"
-  // "Suit"
-  return lines.slice(0, 2).join(' ')
-}
-
-function matchRelicName(text) {
-  console.log('Matching relic name from text:', text)
-  if (!text || text.length < 8) return ''
-
-  const normalized = text.toLowerCase()
-
-  let bestMatch = ''
-  let bestScore = 0
-
-  for (const name of Object.keys(RelicParts)) {
-    const words = name.toLowerCase().split(/\s+/)
-    let score = 0
-
-    for (const w of words) {
-      if (normalized.includes(w)) score++
-    }
-
-    // require at least half the words to match
-    if (score >= Math.ceil(words.length / 2) && score > bestScore) {
-      bestScore = score
-      bestMatch = name
+  // Try to match any known relic name in the first few lines
+  for (const line of lines.slice(0, 3)) {
+    // first 3 lines should cover most cases
+    for (const name of Object.keys(relicLookup)) {
+      if (line.includes(name)) {
+        return name
+      }
     }
   }
 
-  return bestMatch
-}
-
-function fillFormFromNameLocal(target, relicName) {
-  const info = RelicParts[relicName]
-  if (!info) return
-
-  target.set = info.set
-  target.slot = info.slot
-
-  const domainObj = relicDomains.domains.find((d) => d.sets.some((s) => s.name === target.set))
-  target.domain = domainObj?.name || ''
+  // fallback
+  return lines[0] || ''
 }
 
 watch(
@@ -290,10 +273,10 @@ watch(
   ([newSet, newSlot]) => {
     if (!newSet || !newSlot) return
 
-    // Find the relic in RelicParts matching set + slot
-    const matchingName = Object.entries(RelicParts).find(
-      ([name, info]) => info.set === newSet && info.slot === newSlot,
-    )?.[0]
+    // Find relic in relicLookup matching set + slot
+    const matchingName = Object.values(relicLookup).find(
+      (r) => r.set === newSet && r.slot === newSlot,
+    )?.name
 
     if (matchingName) {
       relic.name = matchingName
