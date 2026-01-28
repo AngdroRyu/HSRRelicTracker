@@ -107,6 +107,10 @@ const hasInvalidSubstats = computed(() => {
     (s) => !s.stat || s.value === null || s.value === undefined || s.value === '',
   )
 })
+const hasInvalidMainStat = computed(() => {
+  return !relic.mainStat.stat || relic.mainStat.value === null || relic.mainStat.value === undefined
+})
+const hasSubstats = computed(() => relic.subStatsName.length > 0)
 
 // --------------------
 // File upload & OCR
@@ -191,30 +195,48 @@ async function processNextFile() {
     // Remove matched name from text for parsing stats
     text = text.replace(matchedName, '').trim()
 
-    // --- Step 3: Extract Main Stat ---
-    const statLine = text.split('\n')[0] || '' // first line after removing relic name
-    let mainMatch = statLine.match(/([A-Za-z\s%]+)\s+([-+]?\d+(\.\d+)?)/)
+    // --- Step 3: Extract Main Stat (first or second line) ---
+    const lines = text
+      .split('\n')
+      .map((l) => l.trim())
+      .filter(Boolean)
 
-    if (mainMatch) {
-      let statName = mainMatch[1].trim()
-      const statValue = parseFloat(mainMatch[2])
+    const allowedStats = mainStatsBySlot[localRelic.slot] || []
+    let mainStatFound = false
 
-      // Get allowed main stats for this slot
-      const allowedStats = mainStatsBySlot[localRelic.slot] || []
+    for (let i = 0; i < Math.min(2, lines.length); i++) {
+      const line = lines[i]
+      console.log('Attempting to extract main stat from line:', line)
 
-      // Try to match OCR result to allowed stats (case-insensitive, partial match)
-      const matchedStat = allowedStats.find((s) => statName.toLowerCase().includes(s.toLowerCase()))
+      const match = line.match(/([A-Za-z\s%]+)\s+([-+]?\d+(?:\.\d+)?)/)
 
-      if (matchedStat) {
-        localRelic.mainStat.stat = matchedStat
-        localRelic.mainStat.value = statValue
-        text = text.replace(statLine, '').trim()
-        console.log('Extracted main stat:', localRelic.mainStat.stat, localRelic.mainStat.value)
-      } else {
-        console.warn('Main stat not recognized:', statName)
+      if (!match) continue
+
+      const rawStat = match[1].trim()
+      const value = parseFloat(match[2])
+
+      // Try to match OCR stat to allowed main stats
+      const matchedStat = allowedStats.find((s) => rawStat.toLowerCase().includes(s.toLowerCase()))
+
+      if (!matchedStat) {
+        console.warn('Main stat not recognized:', rawStat)
+        continue
       }
-    } else {
-      console.warn('No main stat found on line:', statLine)
+
+      // ✅ Found valid main stat
+      localRelic.mainStat.stat = matchedStat
+      localRelic.mainStat.value = value
+      mainStatFound = true
+
+      // Remove ONLY the matched line
+      text = text.replace(line, '').trim()
+
+      console.log('Extracted main stat:', matchedStat, value)
+      break
+    }
+
+    if (!mainStatFound) {
+      console.warn('Failed to detect main stat from first two lines:', lines.slice(0, 2))
     }
 
     // --- Step 4: Extract Substats ---
@@ -240,10 +262,6 @@ function cleanOcrText(text) {
   return (
     text
       // Fix elemental icon misreads (Lightning, Fire, etc.)
-      .replace(
-        /^\s*\d+%\s*(Lightning|Fire|Ice|Wind|Quantum|Imaginary)\s+DMG/gi,
-        (_, element) => `${element} DMG`,
-      )
 
       // Remove common OCR junk symbols
       .replace(/[%#&»@®£]/g, '')
@@ -258,26 +276,6 @@ function cleanOcrText(text) {
       .filter((line) => line.length > 2 && !/^(Fe|in|;|\(0\))$/i.test(line))
       .join('\n')
   )
-}
-
-function extractPotentialName(text) {
-  const lines = text
-    .split('\n')
-    .map((l) => l.trim())
-    .filter(Boolean)
-
-  // Try to match any known relic name in the first few lines
-  for (const line of lines.slice(0, 3)) {
-    // first 3 lines should cover most cases
-    for (const name of Object.keys(relicLookup)) {
-      if (line.includes(name)) {
-        return name
-      }
-    }
-  }
-
-  // fallback
-  return lines[0] || ''
 }
 
 watch(
@@ -664,10 +662,12 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
       <button
         class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-50 disabled:cursor-not-allowed"
         @click="addRelic"
-        :disabled="relic.name === '' || hasInvalidSubstats"
+        :disabled="relic.name === '' || hasInvalidSubstats || hasInvalidMainStat || !hasSubstats"
       >
         Add Relic
       </button>
+      <p v-if="!hasSubstats" class="text-xs text-red-400">Needs at least one substat</p>
+      <p v-if="hasInvalidMainStat" class="text-xs text-red-400">Main stat must have a value</p>
       <p v-if="hasInvalidSubstats" class="text-xs text-red-400">All substats must have a value</p>
     </div>
     <div class="w-85 border p-4 rounded bg-stone-800 text-white">
