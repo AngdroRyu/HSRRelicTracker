@@ -601,6 +601,31 @@
           }
         }
       ]
+    },
+    {
+      "name": "Cavern of Corrosion: Path of Possession",
+      "sets": [
+        {
+          "name": "Diviner of Distant Reach",
+          "imagePath": "Item_Diviner_of_Distant_Reach.webp",
+          "pieces": {
+            "Head": "Diviner's Extrapolation Jade Abacus",
+            "Hand": "Diviner's Ingenium Prosthetic Hand",
+            "Body": "Diviner's Astral Robe",
+            "Feet": "Diviner's Cloud-Soaring Boots"
+          }
+        },
+        {
+          "name": "Ever-Glorious Magical Girl",
+          "imagePath": "Item_Ever-Glorious_Magical_Girl.webp",
+          "pieces": {
+            "Head": "Magical Girl's Shining Medal",
+            "Hand": "Magical Girl's Protective Gloves",
+            "Body": "Magical Girl's Everdance Battle Skirt",
+            "Feet": "Magical Girl's Contract Boots"
+          }
+        }
+      ]
     }
   ]
 }

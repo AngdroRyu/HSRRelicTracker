@@ -1013,5 +1013,61 @@
     "slot": "Planar Sphere",
     "domain": "Divergent Universe: Within the West Wind",
     "imagePath": "Item_Amphoreus,_The_Eternal_Land.webp"
+  },
+  "Diviner's Extrapolation Jade Abacus": {
+    "name": "Diviner's Extrapolation Jade Abacus",
+    "set": "Diviner of Distant Reach",
+    "slot": "Head",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Diviner_of_Distant_Reach.webp"
+  },
+  "Diviner's Ingenium Prosthetic Hand": {
+    "name": "Diviner's Ingenium Prosthetic Hand",
+    "set": "Diviner of Distant Reach",
+    "slot": "Hand",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Diviner_of_Distant_Reach.webp"
+  },
+  "Diviner's Astral Robe": {
+    "name": "Diviner's Astral Robe",
+    "set": "Diviner of Distant Reach",
+    "slot": "Body",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Diviner_of_Distant_Reach.webp"
+  },
+  "Diviner's Cloud-Soaring Boots": {
+    "name": "Diviner's Cloud-Soaring Boots",
+    "set": "Diviner of Distant Reach",
+    "slot": "Feet",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Diviner_of_Distant_Reach.webp"
+  },
+  "Magical Girl's Shining Medal": {
+    "name": "Magical Girl's Shining Medal",
+    "set": "Ever-Glorious Magical Girl",
+    "slot": "Head",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Ever-Glorious_Magical_Girl.webp"
+  },
+  "Magical Girl's Protective Gloves": {
+    "name": "Magical Girl's Protective Gloves",
+    "set": "Ever-Glorious Magical Girl",
+    "slot": "Hand",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Ever-Glorious_Magical_Girl.webp"
+  },
+  "Magical Girl's Everdance Battle Skirt": {
+    "name": "Magical Girl's Everdance Battle Skirt",
+    "set": "Ever-Glorious Magical Girl",
+    "slot": "Body",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Ever-Glorious_Magical_Girl.webp"
+  },
+  "Magical Girl's Contract Boots": {
+    "name": "Magical Girl's Contract Boots",
+    "set": "Ever-Glorious Magical Girl",
+    "slot": "Feet",
+    "domain": "Cavern of Corrosion: Path of Possession",
+    "imagePath": "Item_Ever-Glorious_Magical_Girl.webp"
   }
 }

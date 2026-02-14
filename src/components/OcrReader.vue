@@ -144,9 +144,9 @@ async function processNextFile() {
     subStatsName: [],
     imagePath: '',
   }
-
+  const sharpened = await sharpenImage(uploadedImage.value)
   try {
-    const { data } = await Tesseract.recognize(uploadedImage.value, 'eng', {
+    const { data } = await Tesseract.recognize(sharpened, 'eng', {
       logger: (m) => {
         if (m.status === 'recognizing text') {
           progress.value = Math.round(m.progress * 100)
@@ -241,9 +241,16 @@ async function processNextFile() {
 
     // --- Step 4: Extract Substats ---
     localRelic.subStatsName = []
+    if (text.includes('(+3 to activate)')) {
+      text = text.replace('(+3 to activate)', '').trim()
+      //possibly add checkbox to mark as "inactive"
+    }
     for (let i = 0; i < MAX_SUBSTATS; i++) {
       const res = extractSubStat(text)
-      if (!res.stat) break
+
+      // Break if extractSubStat returned null or no stat found
+      if (!res || !res.stat) break
+
       localRelic.subStatsName.push({ stat: res.stat, value: res.value })
       text = res.remainingText
     }
@@ -296,6 +303,7 @@ watch(
 
 function extractSubStat(text) {
   text = text.replace(/\s+/g, ' ')
+  console.log('Extracting substat from text:', text)
   let bestMatch = null
   let bestIndex = Infinity
   for (const stat of substatNames) {
@@ -307,6 +315,7 @@ function extractSubStat(text) {
   }
   if (!bestMatch) return { stat: null, value: null, remainingText: text }
   const valueMatch = text.match(new RegExp(`${bestMatch}\\s+([-+]?\\d+(?:\\.\\d+)?)`, 'i'))
+
   const value = valueMatch ? parseStatValue(valueMatch[1]) : null
   const fullText = valueMatch ? valueMatch[0] : bestMatch
   const remainingText = text.replace(fullText, '').trim()
@@ -455,6 +464,60 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
 
   return best
 }
+async function sharpenImage(imageUrl) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.crossOrigin = 'Anonymous'
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
+
+      canvas.width = img.width
+      canvas.height = img.height
+      ctx.drawImage(img, 0, 0)
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const data = imageData.data
+      const width = canvas.width
+      const height = canvas.height
+
+      // Sharpen kernel
+      const kernel = [0, -1, 0, -1, 5, -1, 0, -1, 0]
+
+      const copy = new Uint8ClampedArray(data)
+
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          let r = 0,
+            g = 0,
+            b = 0
+          let idx = 0
+
+          for (let ky = -1; ky <= 1; ky++) {
+            for (let kx = -1; kx <= 1; kx++) {
+              const i = ((y + ky) * width + (x + kx)) * 4
+              r += copy[i] * kernel[idx]
+              g += copy[i + 1] * kernel[idx]
+              b += copy[i + 2] * kernel[idx]
+              idx++
+            }
+          }
+
+          const o = (y * width + x) * 4
+          data[o] = Math.min(255, Math.max(0, r))
+          data[o + 1] = Math.min(255, Math.max(0, g))
+          data[o + 2] = Math.min(255, Math.max(0, b))
+        }
+      }
+
+      ctx.putImageData(imageData, 0, 0)
+      resolve(canvas.toDataURL())
+    }
+
+    img.src = imageUrl
+  })
+}
 </script>
 
 <template>
@@ -558,7 +621,6 @@ function detectSubstatRolls(stat, observedValue, maxRolls = 5) {
         placeholder="Value"
         class="border p-2 rounded w-full bg-stone-800 text-white"
       />
-
       <!-- Substats -->
       <div>
         <label class="block mb-2">Substats (max {{ MAX_SUBSTATS }})</label>
