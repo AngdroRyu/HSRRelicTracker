@@ -144,7 +144,7 @@ async function processNextFile() {
     subStatsName: [],
     imagePath: '',
   }
-  const sharpened = await sharpenImage(uploadedImage.value)
+  const sharpened = await sharpenImage(await sharpenImage(uploadedImage.value))
   try {
     const { data } = await Tesseract.recognize(sharpened, 'eng', {
       logger: (m) => {
