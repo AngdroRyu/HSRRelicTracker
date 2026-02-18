@@ -216,7 +216,7 @@ async function processNextFile() {
       const value = parseFloat(match[2])
 
       // Try to match OCR stat to allowed main stats
-      const matchedStat = allowedStats.find((s) => rawStat.toLowerCase().includes(s.toLowerCase()))
+      const matchedStat = fuzzyMatchStat(rawStat, allowedStats)
 
       if (!matchedStat) {
         console.warn('Main stat not recognized:', rawStat)
@@ -483,7 +483,7 @@ async function sharpenImage(imageUrl) {
       const height = canvas.height
 
       // Sharpen kernel
-      const kernel = [0, -1, 0, -1, 5, -1, 0, -1, 0]
+      const kernel = [0, -0.5, 0, -0.5, 3, -0.5, 0, -0.5, 0]
 
       const copy = new Uint8ClampedArray(data)
 
@@ -517,6 +517,53 @@ async function sharpenImage(imageUrl) {
 
     img.src = imageUrl
   })
+}
+function fuzzyMatchStat(rawStat, allowedStats) {
+  const normalized = rawStat.toLowerCase()
+  let bestMatch = null
+  let bestScore = Infinity
+
+  for (const s of allowedStats) {
+    const score = levenshtein(normalized, s.toLowerCase())
+    if (score < bestScore) {
+      bestScore = score
+      bestMatch = s
+    }
+  }
+
+  // Accept match if distance is small (e.g., ≤2)
+  return bestScore <= 2 ? bestMatch : null
+}
+// Minimal Levenshtein distance function
+function levenshtein(a, b) {
+  const matrix = []
+
+  // increment along the first column of each row
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i]
+  }
+
+  // increment each column in the first row
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j
+  }
+
+  // Fill in the rest of the matrix
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b[i - 1] === a[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1]
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // substitution
+          matrix[i][j - 1] + 1, // insertion
+          matrix[i - 1][j] + 1,
+        ) // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length]
 }
 </script>
 

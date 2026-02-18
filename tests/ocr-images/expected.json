@@ -1,0 +1,42 @@
+{
+  "Outgoing1.png": {
+    "name": "Diviner's Ingenium Prostehetic Hand",
+    "mainStat": { "stat": "Outgoing Healing Boost", "value": 5.5 },
+    "subStats": [
+      { "stat": "DEF", "value": 16 },
+      { "stat": "CRIT DMG", "value": 6.4 },
+      { "stat": "Effect RES", "value": 3.8 },
+      { "stat": "SPD", "value": 2 }
+    ]
+  },
+  "Outgoing2.png": {
+    "name": "Magical Girl's Everdance Battle Skirt",
+    "mainStat": { "stat": "Outgoing Healing Boost", "value": 5.5 },
+    "subStats": [
+      { "stat": "HP", "value": 3.8 },
+      { "stat": "CRIT Rate", "value": 2.5 },
+      { "stat": "Break Effect", "value": 5.8 },
+      { "stat": "ATK", "value": 21 }
+    ]
+  },
+  "33-1.png": {
+    "name": "Magical Girl's Contract Boots",
+    "mainStat": { "stat": "SPD", "value": 4 },
+    "subStats": [
+      { "stat": "HP", "value": 33 },
+      { "stat": "ATK", "value": 19 },
+      { "stat": "Break Effect", "value": 5.1 },
+      { "stat": "Effect Hit Rate", "value": 3.8 }
+    ]
+  },
+  "33-2.png": {
+    "name": "Diviner's Ingenium Prostehetic Hand",
+    "mainStat": { "stat": "ATK", "value": 56 },
+    "subStats": [
+      { "stat": "HP", "value": 33 },
+      { "stat": "DEF", "value": 4.3 },
+      { "stat": "SPD", "value": 2 },
+      { "stat": "DEF", "value": 19 }
+    ]
+  }
+}
